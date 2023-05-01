@@ -7,6 +7,7 @@ module.exports = {
         bgImage: "url('/bgimg.png')",
       },
       colors: {
+        primary: "#EFC81A",
         secondary: "#2E266F",
       },
       boxShadow: {
