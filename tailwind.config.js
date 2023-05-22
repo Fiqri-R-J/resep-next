@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         bgImage: "url('/bgimg.png')",
+        bgLoginRegister: "url('/bgloginregister.png')",
       },
       colors: {
         primary: "#EFC81A",

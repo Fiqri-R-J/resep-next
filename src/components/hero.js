@@ -8,7 +8,7 @@ export default function Hero() {
               Discover Recipe & Delicious Food
             </h1>
             <input
-              className="bg-slate-200 w-4/5 h-12 mt-7 px-5 rounded-md"
+              className="bg-slate-200 w-4/5 h-12 mt-7 border px-5 rounded-md focus:border-primary focus:outline-none"
               type="text"
               name="search"
               placeholder="Search....."

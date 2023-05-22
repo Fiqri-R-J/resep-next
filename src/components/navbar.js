@@ -1,14 +1,22 @@
+import Link from "next/link";
+import { useEffect, useState } from "react";
+
 export default function Navbar() {
+  const [isLogin, setIsLogin] = useState(false);
+  useEffect(() => {
+    setIsLogin(localStorage.getItem("isLogin"));
+  }, []);
+
   return (
     <>
       <nav className="bg-white border-gray-200 dark:bg-yellow-400 drop-shadow-lg sticky top-0 z-50">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <a href="https://flowbite.com/" className="flex items-center">
+          <Link href="https://flowbite.com/" className="flex items-center">
             <img src="/logo.png" className="h-8 mr-3" alt="Flowbite Logo" />
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
               Mama Recipe
             </span>
-          </a>
+          </Link>
           <button
             data-collapse-toggle="navbar-default"
             type="button"
@@ -57,14 +65,23 @@ export default function Navbar() {
                   Profile
                 </a>
               </li>
-              <li>
-                <a
-                  href="#"
+              {isLogin ? (
+                <Link
+                  href="/auth/logout"
                   className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-800 md:p-0 dark:text-white md:dark:hover:text-blue-800 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 >
-                  Login
-                </a>
-              </li>
+                  Logout
+                </Link>
+              ) : (
+                <li>
+                  <Link
+                    href="/auth/login"
+                    className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-800 md:p-0 dark:text-white md:dark:hover:text-blue-800 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  >
+                    Login
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
         </div>

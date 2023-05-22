@@ -1,34 +1,36 @@
-export default function NewRecipe() {
+import Link from "next/link";
+export default function NewRecipe(props) {
   return (
     <>
-      <div className="bg-white h-screen mt-20">
+      <div className="h-screen mt-20 bg-white">
         <div className="border-l-8 border-yellow-500 ms-10 h-14">
-          <h2 className="text-3xl font-semibold m-2 py-2">New Recipe</h2>
+          <h2 className="py-2 m-2 text-3xl font-semibold">New Recipe</h2>
         </div>
-        <div className=" mt-10">
+        <div className="mt-10 ">
           <div className="flex flex-row">
             <div className="basis-6/12">
               <div className="relative">
                 <div className=" h-[500px] w-[350px] bg-yellow-400 rounded-r-lg"></div>
-                <img
-                  src="/burger.png"
-                  className="absolute left-10 top-10 h-[500px] w-[500px]"
-                  alt="New Recipe"
-                />
+                <div className="absolute left-10 top-10 h-[500px] w-[500px] bg-slate-500">
+                  <img
+                    src={props?.item?.[0]?.picture}
+                    className="h-[500px] w-[500px]"
+                    alt="New Recipe"
+                  />
+                </div>
               </div>
             </div>
             <div className="basis-6/12">
-              <div className="w-80 mt-32">
-                <h1 className=" text-3xl font-semibold mb-5">
-                  Healthy Bone Broth Ramen (Quick & Easy)
+              <div className="mt-32 w-80">
+                <h1 className="mb-5 text-3xl font-semibold ">
+                  {props?.item?.[0]?.name}
                 </h1>
-                <p className="text-lg">
-                  Quick + Easy Chicken Bone Broth Ramen- Healthy chicken ramen
-                  in a hurry? That’s right!
-                </p>
-                <button className="h-10 w-32 bg-yellow-400 hover:bg-yellow-500 active:bg-yellow-400 hover:text-slate-50 text-white mt-5 rounded-lg">
-                  Learn More
-                </button>
+                <p className="text-lg"> {props?.item?.[0]?.description}</p>
+                <Link href={`/${props?.item?.[0]?.slug}`}>
+                  <button className="w-32 h-10 mt-5 text-white bg-yellow-400 rounded-lg hover:bg-yellow-500 active:bg-yellow-400 hover:text-slate-50">
+                    Learn More
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
