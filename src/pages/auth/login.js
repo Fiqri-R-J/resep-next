@@ -56,7 +56,7 @@ export default function login() {
       </Head>
       <main>
         <div className="flex flex-row">
-          <div class="basis-6/12">
+          <div class="hidden md:block md:w-6/12">
             <div className="bg-bgLoginRegister bg-cover bg-no-repeat h-screen ">
               <div className="bg-primary/80 h-screen">
                 <div className="grid place-content-center pt-72">

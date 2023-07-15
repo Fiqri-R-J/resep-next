@@ -1,6 +1,8 @@
 import Link from "next/link";
+import React from "react";
+
 export default function PopularRecipe(props) {
-  console.log(props);
+  const { isLoading } = props;
   return (
     <>
       <div className="mt-20 bg-white ">
@@ -9,8 +11,15 @@ export default function PopularRecipe(props) {
         </div>
         <div className="container mx-auto mt-10">
           <div className="grid grid-cols-3 gap-y-7">
+            {isLoading
+              ? Array.from({ length: 6 }).map((_, index) => (
+                  <React.Fragment key={index}>
+                    <div className="rounded-lg animate-pulse bg-slate-400 h-96 w-96"></div>
+                  </React.Fragment>
+                ))
+              : null}
             {props.item.map((item) => (
-              <Link href={`/${item?.slug}`}>
+              <Link href={`/recipe/${item?.slug}`}>
                 <div className="relative rounded-lg bg-slate-400 h-96 w-96">
                   <div className="absolute transition ease-in-out delay-150 rounded-lg hover:bg-black/70 h-96 w-96"></div>
                   <img

@@ -15,8 +15,10 @@ export default function Home() {
   useEffect(() => {
     const getNewRecipe = async () => {
       const recipe = await axiosInstance.get("/recipe?sort=asc&limit=1&page=1");
-      setNewRecipe(recipe.data?.data);
-      setIsLoading(false);
+      setTimeout(() =>{
+        setNewRecipe(recipe.data?.data);
+        setIsLoading(false);
+      }, 3000)
     };
     getNewRecipe().catch(console.error);
   }, []);
@@ -24,7 +26,10 @@ export default function Home() {
   useEffect(() => {
     const getPopularRecipe = async () => {
       const recipe = await axiosInstance.get("/recipe?sort=asc&limit=6&page=1");
-      setPopularRecipe(recipe.data?.data);
+      setTimeout(()=>{
+        setPopularRecipe(recipe.data?.data);
+      setIsLoading(false)
+      },3000)
     };
     getPopularRecipe().catch(console.error);
   }, []);
@@ -39,8 +44,8 @@ export default function Home() {
       <main>
         <Navbar />
         <Hero />
-        <NewRecipe item={newRecipe} />
-        <PopularRecipe item={popularRecipe} />
+        <NewRecipe isLoading ={isLoading} item={newRecipe} />
+        <PopularRecipe isLoading ={isLoading} item={popularRecipe} />
         <Footer />
       </main>
     </>
